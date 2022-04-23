@@ -1,11 +1,16 @@
 import React from 'react';
-// import 'features/common/style/Button.scss'
+import { useDispatch } from 'react-redux';
+import { userActions } from '../../redux/reducers/userReducer.ts';
+
 export default function Logout(){
-    return <a className="arrow-btn" style={{cursor:"pointer"}}
-        onClick = { e => {
+    const dispatch = useDispatch()
+    return <form onSubmit={
+        e => {
             e.preventDefault()
-            e.stopPropagation()
-            localStorage.clear(e)
-            window.location.href="/"
-        }}> 로그아웃
-    </a>}
+            dispatch(userActions.logoutRequest())
+        }
+    }
+    >
+        <button type="submit">로그아웃</button>
+    </form>
+}    

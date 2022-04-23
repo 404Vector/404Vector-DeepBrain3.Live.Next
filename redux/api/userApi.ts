@@ -1,4 +1,4 @@
-import axios, {AxiosResponse} from 'axios'
+import axios, {Axios, AxiosResponse} from 'axios'
 
 const SERVER = 'http://127.0.0.1:5000'
 const headers = {
@@ -52,6 +52,17 @@ export const loginApi = async (payload : {
         localStorage.setItem("loginUser", loginUser)
         return response.data
     } catch (err) {
+        return err;
+    }
+}
+
+export const logoutApi = async() =>{
+    try{
+        const response: AxiosResponse<unknown, UserType[]> = await axios.get(
+            `${SERVER}/users/logout`,
+            {headers}
+        )
+    }catch(err){
         return err;
     }
 }

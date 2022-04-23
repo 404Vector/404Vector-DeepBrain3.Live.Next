@@ -51,6 +51,20 @@ const userSlice = createSlice({
         loginFailure(state: UserState, {payload}){ 
             state.data = payload;
             state.loading = false;
+        },
+        logoutRequest(state: UserState, {payload}){ 
+            alert('logout req logoutRequest')
+            state.loading = false;
+        },
+        logoutSuccess(state: UserState, {payload}){ 
+            alert('logout req logoutSuccess')
+            state.loading = false;
+            localStorage.clear()
+            window.location.href = '/'
+        },
+        logoutFailure(state: UserState, {payload}){ 
+            alert('logout req logoutFailure')
+            state.loading = false;
         }
     }
 })
