@@ -21,7 +21,7 @@ export default function Nav(){
       setUserSubTitle(["회원가입","로그인"])
 
     }else{
-      setUserUrls(["/user/logout","/user/profile","/user/modifyUser","/user/withdrawUser","user/getUsers"])
+      setUserUrls(["/user/logout","/user/profile","/user/modifyUser","/user/withdrawUser","/user/getUsers"])
       setUserSubTitle(["로그아웃","프로필","회원수정","회원탈퇴","회원목록"])
     }
   },[])
