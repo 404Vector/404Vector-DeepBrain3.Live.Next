@@ -40,7 +40,7 @@ function* join(user: UserJoinType){
     }
 }
 export function* watchJoin(){
-    alert(' 2.5 ')
+    //alert(' 2.5 saga watch!')
     yield takeLatest(userActions.joinRequest, join)
 }
 
