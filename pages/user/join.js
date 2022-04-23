@@ -1,21 +1,19 @@
 import React,{useState} from 'react'
-import { userActions } from '../../redux/reducers/userReducer.ts';
+import { useDispatch } from 'react-redux';
+import { userActions } from "../../redux/userReducer.js"
 import tableStyles from '../common/styles/table.module.css'
 
-export default function  Join()
-{
-    const [user, setUser] =useState(
-    {
+export default function  Join(){
+    const [user, setUser] =useState({
         userid:'', password:'', email:'', name:'', phone:'', birth:'', address:''
     })
-    const handleChange = e =>
-    {
+    const dispatch = useDispatch()
+    const handleChange = e =>{
         e.preventDefault()
         const{name, value} = e.target;
         setUser({...user,[name]: value})
     }
 
-    // onSubmit은 위에 정의되는 것이 맞지만, 한 번 밖에 사용하지 않아 바로 입력
     return <form onSubmit={
         e => {
             e.preventDefault()
@@ -25,7 +23,8 @@ export default function  Join()
                 userid:'', password:'', email:'', name:'', phone:'', birth:'', address:''
             })
         }
-    }>
+    }
+    >
         <table className={tableStyles.table}>
             <thead>
                 <tr>

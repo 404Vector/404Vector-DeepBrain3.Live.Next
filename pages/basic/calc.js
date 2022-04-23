@@ -1,20 +1,19 @@
-import React, { useState } from "react";
 import tableStyles from '../common/styles/table.module.css'
-export default function Calc() {
-    const [inputs, setInputs] = useState({opcode: "+"})
-    const [result, setResult] = useState(``)
-    const { num1, num2, opcode} = inputs
+import React, {useState} from "react";
 
-    const onChange = (e) => {
+export default function Calculator(){
+    const [result, setResult] = useState('')
+    const [inputs, setInputs] = useState({opcode: "+"})
+    const { num1, num2, opcode} = inputs
+    const onChange = e => {
         e.preventDefault()
-        const { value, name } = e.target
+        const { name, value } = e.target
         setInputs({
             ...inputs,
             [name]: value
         })
     }
-
-    const onClick = async (e) => {
+    const onClick = e => {
         e.preventDefault()
         switch (opcode){
             case "+" :
@@ -31,7 +30,6 @@ export default function Calc() {
                 console.log("Default")
         }
     }
-
     return (<form >
         <table className={tableStyles.table}>
             <thead>

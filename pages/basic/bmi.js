@@ -1,16 +1,9 @@
-import axios from 'axios';
 import React, { useState } from 'react';
+import axios from 'axios';
 import tableStyles from '../common/styles/table.module.css'
 export default function Bmi() {
-    const proxy = 'http://localhost:5000'
     const [inputs, setInputs] = useState({})
-
-    const handleChange = e => {
-        e.preventDefault()
-        const { value, name } = e.target
-        setInputs({ ...inputs, [name]: value })
-    }
-
+    const proxy = 'http://localhost:5000'
     const handleSubmit = e => {
         e.preventDefault()
         axios.post(proxy+'/api/basic/bmi', inputs)
@@ -25,7 +18,13 @@ export default function Bmi() {
         })
         .catch(err => alert(err))
     }
-    return (<form action="" onSubmit={handleSubmit} >
+    const handleChange = e => {
+        e.preventDefault()
+        const { value, name } = e.target
+        setInputs({ ...inputs, [name]: value })
+    }
+
+    return ( <form action="" onSubmit={handleSubmit} >
         <table className={tableStyles.table}>
             <thead>
                 <tr>

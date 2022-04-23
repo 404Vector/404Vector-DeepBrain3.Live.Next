@@ -1,18 +1,14 @@
-import { combineReducers } from 'redux'
-//import adminReducer from './adminReducer.ts'
-//import basicReducer from './basicReducer.ts'
-//import boardReducer from './boardReducer.ts'
-//import gameReducer from './gameReducer.ts'
-//import todoReducer from './todoReducer.ts'
-import userReducer from './userReducer.ts'
+/*
+import { all } from 'redux-saga/effects';
+import { watchJoin } from "./userSaga.ts";
 
-const rootReducer = combineReducers({
-    //adminReducer,
-    //basicReducer,
-    //boardReducer,
-    //gameReducer,
-    //todoReducer,
-    userReducer
-})
-export default rootReducer
-export type RootState = ReturnType<typeof rootReducer>
+export default function* rootSaga() {
+    yield all([watchJoin()]);
+}
+ */
+import { all } from 'redux-saga/effects'
+import {} from './userSaga.ts'
+
+export default function* rootSaga(){
+    yield all([])
+}

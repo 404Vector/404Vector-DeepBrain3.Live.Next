@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-// 몽고DB 스키마
 export interface UserType{
     userid: string;
     password: string;  
@@ -11,13 +10,6 @@ export interface UserType{
     address: string;
 }
 
-/* 패턴화 되어있는것임.
-export interface ABCState{
-    loading: boolean;
-    data: ABCType[];
-    error: any;
-}
-*/
 export interface UserState{
     loading: boolean;
     data: UserType[];
@@ -32,21 +24,18 @@ const initialState: UserState = {
 }
 
 const userSlice = createSlice({
-    name: 'users', // 이름
-    initialState, // 초기화
-    //Slice들
-    reducers: 
-    {
-        // 리듀서가 되기 전 상태, action이 투입될 때 리듀서가 된다
-        joinRequest(state: UserState, payload){
+    name: 'users',
+    initialState,
+    reducers: {
+        //원래는 key 값임 joinRequest () =>{} 가 원래 form
+        joinRequest(state: UserState, payload) {
             alert('진행 2: 리듀서 내부 ') 
             state.loading = true; 
         },
-        // {payload}이 compoent에서 넘어와야함, "Action"
-        // 우리는 완전한 reducer를 볼 수 없다?
         joinSuccess(state: UserState, {payload}){ 
             state.data = [...state.data, payload]
             state.loading = false;
+            
         },
         joinFailure(state: UserState, {payload}){ 
             state.data = payload;
@@ -54,6 +43,7 @@ const userSlice = createSlice({
         }
     }
 })
+//reducers 내용이 actions로 들어간다, action은 saga로 넘어간다
 const { reducer, actions } = userSlice
 export const userActions = actions
-export default reducer
+export default reducer // root reducer로 버블링됨

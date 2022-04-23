@@ -1,5 +1,5 @@
 import {Layout} from "./common";
-//import { wrapper } from '../redux/store.ts'
+
 import Head from 'next/head'
 const App = ({ Component, pageProps}) => {
   return (<>
@@ -18,6 +18,4 @@ const App = ({ Component, pageProps}) => {
   )
 }
 
-// 최상위 계층인 App을 Redux로 감싸기 -> redux의 영역에 react(component)를 넣음
-//export default wrapper.withRedux(App)
 export default App
