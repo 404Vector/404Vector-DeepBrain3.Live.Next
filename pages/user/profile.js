@@ -8,6 +8,7 @@ export default function Profile(){
         const user = JSON.parse(loginUser)
         setProfile(user)
     }, [])
+    
     return(<>
     <form >
         <table className={tableStyles.table}>

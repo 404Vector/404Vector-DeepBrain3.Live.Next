@@ -1,7 +1,7 @@
 import { PayloadAction } from '@reduxjs/toolkit'
 import { call, delay, put, takeLatest } from 'redux-saga/effects'
 import { userActions } from '../reducers/userReducer.ts';
-import { joinApi, loginApi, logoutApi } from '../api/userApi.ts'
+import { joinApi, loginApi, logoutApi, delUserApi } from '../api/userApi.ts'
 
 interface UserJoinType{
     type: string;
@@ -69,4 +69,17 @@ function* logout(){
 }
 export function* watchLogout(){
     yield takeLatest(userActions.logoutRequest, logout)
+} 
+
+//watchLogout
+function* delUser(){
+    try{
+        const response : UserLoginSuccessType = yield delUserApi()
+        yield put(userActions.delUserSuccess(response))
+    }catch(error){
+         console.log(error)
+    }
+}
+export function* watchDelUser(){
+    yield takeLatest(userActions.delUserRequest, delUser)
 } 

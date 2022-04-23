@@ -66,3 +66,16 @@ export const logoutApi = async() =>{
         return err;
     }
 }
+
+export const delUserApi = async() =>{
+    try{
+        const response: AxiosResponse<unknown, UserType[]> = await axios.delete(
+            `${SERVER}/users/delUserApi`,
+            {headers}
+        )
+    }catch(err){
+        return err;
+    }
+}
+
+
