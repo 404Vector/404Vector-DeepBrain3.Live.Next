@@ -1,21 +1,20 @@
-import {Layout} from "./common";
-import { wrapper } from '../redux/store.ts'
-import Head from 'next/head'
-const App = ({ Component, pageProps}) => {
-  return (<>
-    <Head>
-      <meta charSet="utf-8"/>
-      <meta name="viewport" 
-      content="width=device-width, user-scalable=no, 
-      initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"></meta>
-      <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
-      <title>Soccer App</title>
-    </Head>
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
-    </>
-  )
-}
+import React from "react";
+import PropTypes from "prop-types";
+import '@/styles/globals.css'
+import {Footer, Header, Nav} from "@/components";
+import {wrapper} from "@/modules/store";
+import withReduxSaga from 'next-redux-saga';
 
-export default wrapper.withRedux(App)
+const App = ({Component}) => {
+    return <> < Header /> <Nav/>
+    <div className='AppMinHeight'>
+        <Component/>
+    </div>
+    <Footer/>
+</>
+}
+App.propTypes = {
+    Component: PropTypes.elementType
+};
+
+export default wrapper.withRedux(withReduxSaga(App));
